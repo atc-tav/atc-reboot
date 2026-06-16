@@ -1,5 +1,4 @@
 import { Box, Group, Text } from "@mantine/core";
-import { HandArrow } from "@/components/accents/HandArrow";
 
 /**
  * A compact "Data → Information → Insight" flow — a teaser of the analytics
@@ -32,9 +31,9 @@ export function DataFlow() {
             </Text>
           </Box>
           {i < STEPS.length - 1 && (
-            <Box c="brand.1" style={{ display: "flex" }}>
-              <HandArrow />
-            </Box>
+            <Text c="brand.1" fz="xl" fw={700} aria-hidden>
+              →
+            </Text>
           )}
         </Group>
       ))}

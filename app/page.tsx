@@ -8,7 +8,6 @@ import { PullQuote } from "@/components/sections/PullQuote";
 import { TrustedBy } from "@/components/sections/TrustedBy";
 import { FeatureGrid, type Feature } from "@/components/sections/FeatureGrid";
 import { CtaSection } from "@/components/cta/CtaSection";
-import { HandUnderline } from "@/components/accents/HandUnderline";
 
 const services: Feature[] = [
   {
@@ -40,7 +39,7 @@ export default function HomePage() {
           <>
             If you sell stuff online, I help you sell{" "}
             <Text span inherit c="brand.6">
-              <HandUnderline>more</HandUnderline>
+              more
             </Text>{" "}
             of it.
           </>
