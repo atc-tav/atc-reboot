@@ -1,36 +1,11 @@
 import { Paper, SimpleGrid, Text } from "@mantine/core";
+import type { Impact } from "@/content/pages/types";
 
 /**
- * Researched, sourced stats on the tangible business impact of analytics &
- * optimisation. Sources are shown in monospace (a small "citation" cue that
- * fits the blueprint aesthetic and signals these are real figures, not fluff).
+ * Sourced impact stats. Pure presentation — the figures are passed in. Sources
+ * render in monospace (a small "citation" cue that fits the blueprint look).
  */
-type Impact = { value: string; label: string; source: string };
-
-const impacts: Impact[] = [
-  {
-    value: "~70%",
-    label: "of online shopping carts are abandoned before purchase.",
-    source: "Baymard Institute",
-  },
-  {
-    value: "+35%",
-    label: "average conversion lift available from better checkout UX alone.",
-    source: "Baymard Institute",
-  },
-  {
-    value: "5–6%",
-    label: "higher productivity at firms that genuinely run on their data.",
-    source: "MIT · Brynjolfsson et al.",
-  },
-  {
-    value: "25%+",
-    label: "more profit from just a 5% increase in customer retention.",
-    source: "Reichheld · HBR",
-  },
-];
-
-export function ImpactStats() {
+export function ImpactStats({ impacts }: { impacts: Impact[] }) {
   return (
     <SimpleGrid cols={{ base: 2, md: 4 }} spacing="lg">
       {impacts.map((s) => (

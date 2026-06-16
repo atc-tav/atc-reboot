@@ -1,18 +1,13 @@
 import { Card, SimpleGrid, Text, ThemeIcon, Title } from "@mantine/core";
 import * as TablerIcons from "@tabler/icons-react";
 import type { Icon } from "@tabler/icons-react";
+import type { Feature } from "@/content/pages/types";
 
 /**
- * A responsive grid of "value prop" / service cards, each with an icon, title,
- * and short description. Icons are referenced by their Tabler name (a string)
- * so the data can live in plain content/config without importing components.
+ * A responsive grid of "value prop" / service cards. Pure presentation — the
+ * feature data is passed in. Icons are referenced by their Tabler name (a
+ * string) so the content can stay plain data without importing components.
  */
-export type Feature = {
-  /** Tabler icon name, e.g. "IconChartBar". Falls back to a dot if unknown. */
-  icon?: string;
-  title: string;
-  description: string;
-};
 
 type FeatureGridProps = {
   features: Feature[];

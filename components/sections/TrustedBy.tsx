@@ -1,23 +1,19 @@
 import { Box, Container, Group, Image, Stack, Text } from "@mantine/core";
+import type { Client } from "@/content/pages/types";
 
 /**
- * "Trusted by" logo cloud. Real client work — strong social proof.
+ * "Trusted by" logo cloud. Pure presentation — label and clients are passed in.
  *
  * Each client renders its real SVG logo when a `logo` path is set (drop files in
- * public/logos/), otherwise a clean monochrome wordmark placeholder. Swapping a
- * placeholder for a real logo is just adding the file and the `logo` field.
+ * public/logos/), otherwise a clean monochrome wordmark placeholder.
  */
-type Client = { name: string; logo?: string };
-
-const clients: Client[] = [
-  { name: "Moderna" },
-  { name: "Disney" },
-  { name: "NFL" },
-  { name: "Aritzia" },
-  { name: "Lululemon" },
-];
-
-export function TrustedBy() {
+export function TrustedBy({
+  label,
+  clients,
+}: {
+  label: string;
+  clients: Client[];
+}) {
   return (
     <Box
       component="section"
@@ -36,7 +32,7 @@ export function TrustedBy() {
             c="dimmed"
             style={{ letterSpacing: "0.18em" }}
           >
-            Worked with teams at
+            {label}
           </Text>
 
           <Group justify="center" gap={48} wrap="wrap" style={{ rowGap: 24 }}>
