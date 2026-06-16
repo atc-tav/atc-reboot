@@ -38,7 +38,10 @@ export const siteConfig = {
    */
   contact: {
     label: "Get in touch",
-    href: "https://www.linkedin.com/in/your-profile",
+    // Visitors land on the profile, where LinkedIn's native Connect / Message
+    // buttons live. (LinkedIn has no reliable public deep-link that forces a
+    // "message" or "connect" action for someone who isn't already a connection.)
+    href: "https://www.linkedin.com/in/tavmcgregor/",
     external: true,
   } satisfies ContactAction,
 
@@ -51,7 +54,7 @@ export const siteConfig = {
 
   /** Footer / social links. */
   social: {
-    linkedin: "https://www.linkedin.com/in/your-profile",
+    linkedin: "https://www.linkedin.com/in/tavmcgregor/",
     email: "tav@addtocart.ca",
   },
 } as const;
