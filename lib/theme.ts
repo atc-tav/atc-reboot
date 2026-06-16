@@ -27,11 +27,11 @@ export const theme = createTheme({
   primaryColor: "brand",
   colors: { brand },
   defaultRadius: "md",
-  fontFamily:
-    "var(--font-sans), -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
+  // Font roles are defined as CSS variables in app/globals.css.
+  fontFamily: "var(--font-sans)",
+  fontFamilyMonospace: "var(--font-mono)",
   headings: {
-    fontFamily:
-      "var(--font-sans), -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
+    fontFamily: "var(--font-display)",
     fontWeight: "700",
   },
 });

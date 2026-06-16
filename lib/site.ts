@@ -52,6 +52,16 @@ export const siteConfig = {
     { label: "About", href: "/about" },
   ] satisfies NavLink[],
 
+  /** Typography. */
+  fonts: {
+    /**
+     * Adobe Fonts (Typekit) kit CSS URL, e.g. "https://use.typekit.net/abc1def.css".
+     * Leave empty until the web project exists — the <link> only renders when set.
+     * The actual family names live in the font-role variables in app/globals.css.
+     */
+    adobeKitUrl: "",
+  },
+
   /** Footer / social links. */
   social: {
     linkedin: "https://www.linkedin.com/in/tavmcgregor/",

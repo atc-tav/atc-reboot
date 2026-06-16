@@ -1,6 +1,17 @@
 :root {
+  /*
+   * Font roles — wired into the Mantine theme (lib/theme.ts).
+   * Adobe Fonts family names go at the FRONT of each stack once the Typekit kit
+   * is connected (see lib/site.ts -> fonts.adobeKitUrl). Every stack ends in safe
+   * system fallbacks, so the site looks intentional before (and if) fonts load.
+   */
+  --font-display: "proxima-nova", system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
   --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    sans-serif;
+    Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+  --font-hand: "Caveat", "Segoe Print", "Comic Sans MS", cursive;
 }
 
 * {
@@ -16,6 +27,11 @@ body {
 main {
   display: block;
   min-height: 60vh;
+}
+
+/* Handwritten accent helper — for small flourishes/labels, never body text. */
+.fontHand {
+  font-family: var(--font-hand);
 }
 
 /* Respect users who prefer reduced motion for any custom transitions. */
