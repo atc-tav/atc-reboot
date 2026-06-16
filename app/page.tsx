@@ -1,6 +1,9 @@
 import { Box, Container, Stack, Text } from "@mantine/core";
 import { Hero } from "@/components/sections/Hero";
+import { BlueprintBand } from "@/components/sections/BlueprintBand";
+import { DataFlow } from "@/components/sections/DataFlow";
 import { SectionHeading } from "@/components/sections/SectionHeading";
+import { ImpactStats } from "@/components/sections/ImpactStats";
 import { FeatureGrid, type Feature } from "@/components/sections/FeatureGrid";
 import { CtaSection } from "@/components/cta/CtaSection";
 
@@ -43,6 +46,32 @@ export default function HomePage() {
         subtitle="I'm an independent consultant who connects your store's data to the goals that actually move revenue — then helps you act on it. No fluff, no jargon, no junior team."
         secondaryAction={{ label: "See what I do", href: "/services" }}
       />
+
+      {/* The big idea — what analytics actually is, on a blueprint band */}
+      <BlueprintBand
+        eyebrow="The big idea"
+        title="Analytics turns raw data into revenue."
+        subtitle="Every store is buried in data — sessions, carts, campaigns, a dozen dashboards no one reads. The value was never in collecting it. It's in turning it into the few decisions that actually grow the business."
+      >
+        <DataFlow />
+        <Text className="fontHand" c="brand.1" fz={{ base: 22, sm: 28 }} mt="xs">
+          the last step is where the money is
+        </Text>
+      </BlueprintBand>
+
+      {/* The problem + why it matters, grounded in real numbers */}
+      <Box component="section" py={{ base: 48, sm: 80 }}>
+        <Container size="lg">
+          <Stack gap={40}>
+            <SectionHeading
+              eyebrow="Why it matters"
+              title="You're not short on data. You're short on answers."
+              description="Most stores have GA4, a pile of dashboards, and more reports than anyone reads — and still make the big calls on gut feel. That gap between data and decisions is expensive."
+            />
+            <ImpactStats />
+          </Stack>
+        </Container>
+      </Box>
 
       <Box component="section" py={{ base: 48, sm: 80 }}>
         <Container size="lg">

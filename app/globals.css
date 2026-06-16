@@ -54,6 +54,18 @@ main {
   mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
 }
 
+/*
+ * Inverse blueprint grid — thin WHITE lines on a transparent ground, designed to
+ * overlay a blue gradient (the "section slide" look from the deck).
+ */
+.blueprintGridInverse {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-size: 30px 30px;
+  background-position: center;
+}
+
 /* Respect users who prefer reduced motion for any custom transitions. */
 @media (prefers-reduced-motion: reduce) {
   * {
