@@ -65,7 +65,10 @@ draft: false          # true = hidden in production, visible in dev
 
 Write in Markdown. To keep it visually interesting, drop in components:
 
-<KeyTakeaways points={["First point", "Second point"]} />
+<KeyTakeaways>
+  <Takeaway>First point</Takeaway>
+  <Takeaway>Second point</Takeaway>
+</KeyTakeaways>
 
 <StatGrid>
   <Stat value="3.1x" label="Return on ad spend" />

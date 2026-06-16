@@ -3,7 +3,7 @@ import { Callout } from "./Callout";
 import { Steps, Step } from "./Steps";
 import { Stat, StatGrid } from "./Stat";
 import { Figure } from "./Figure";
-import { KeyTakeaways } from "./KeyTakeaways";
+import { KeyTakeaways, Takeaway } from "./KeyTakeaways";
 
 /**
  * Components made available to every article via MDXRemote.
@@ -24,4 +24,5 @@ export const mdxComponents: MDXRemoteProps["components"] = {
   StatGrid,
   Figure,
   KeyTakeaways,
+  Takeaway,
 };
