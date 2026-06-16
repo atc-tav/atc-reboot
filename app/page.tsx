@@ -5,7 +5,7 @@ import { DataFlow } from "@/components/sections/DataFlow";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { ImpactStats } from "@/components/sections/ImpactStats";
 import { PullQuote } from "@/components/sections/PullQuote";
-import { FeatureGrid } from "@/components/sections/FeatureGrid";
+import { ProcessCycle } from "@/components/sections/ProcessCycle";
 import { TrustedBy } from "@/components/sections/TrustedBy";
 import { CtaSection } from "@/components/cta/CtaSection";
 import { homeContent as c } from "@/content/pages/home";
@@ -75,7 +75,10 @@ export default function HomePage() {
               title={c.howIHelp.title}
               description={c.howIHelp.description}
             />
-            <FeatureGrid features={c.howIHelp.features} />
+            <ProcessCycle
+              stages={c.howIHelp.stages}
+              cycleNote={c.howIHelp.cycleNote}
+            />
           </Stack>
         </Container>
       </Box>
