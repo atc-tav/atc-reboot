@@ -59,7 +59,7 @@ export const siteConfig = {
      * Leave empty until the web project exists — the <link> only renders when set.
      * The actual family names live in the font-role variables in app/globals.css.
      */
-    adobeKitUrl: "",
+    adobeKitUrl: "https://use.typekit.net/cir3rlg.css",
   },
 
   /** Footer / social links. */

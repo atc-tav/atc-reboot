@@ -2,6 +2,7 @@ import "@mantine/core/styles.css";
 import "./globals.css";
 
 import type { Metadata } from "next";
+import { Caveat } from "next/font/google";
 import {
   ColorSchemeScript,
   MantineProvider,
@@ -11,6 +12,15 @@ import { siteConfig } from "@/lib/site";
 import { theme } from "@/lib/theme";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+
+// Handwritten accent font. next/font self-hosts it and exposes it through the
+// --font-hand CSS variable (consumed by .fontHand and the Mantine theme).
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-hand",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -44,7 +54,7 @@ export default function RootLayout({
           </>
         ) : null}
       </head>
-      <body>
+      <body className={caveat.variable}>
         <MantineProvider theme={theme} defaultColorScheme="light">
           <Header />
           <main>{children}</main>
