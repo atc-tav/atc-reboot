@@ -17,7 +17,10 @@ export function PullQuote({ label, quote, handwritten }: PullQuoteProps) {
     <Box
       component="section"
       py={{ base: 56, sm: 88 }}
-      style={{ backgroundColor: "var(--mantine-color-brand-0)" }}
+      style={{
+        backgroundColor:
+          "light-dark(var(--mantine-color-brand-0), var(--mantine-color-dark-6))",
+      }}
     >
       <Container size="sm">
         <Stack align="center" ta="center" gap="lg">
@@ -49,7 +52,6 @@ export function PullQuote({ label, quote, handwritten }: PullQuoteProps) {
             fz={{ base: 24, sm: 32 }}
             fw={700}
             lh={1.32}
-            c="dark.8"
             style={{ fontFamily: "var(--font-display)" }}
           >
             {quote}

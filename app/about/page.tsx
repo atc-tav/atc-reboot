@@ -15,7 +15,7 @@ function AboutBlock({ title, children }: { title: string; children: React.ReactN
       <Title order={2} fz={{ base: 22, sm: 26 }}>
         {title}
       </Title>
-      <Text fz="lg" c="dark.6" lh={1.7}>
+      <Text fz="lg" c="dimmed" lh={1.7}>
         {children}
       </Text>
     </Stack>
@@ -32,7 +32,10 @@ export default function AboutPage() {
         component="section"
         pos="relative"
         py={{ base: 56, sm: 88 }}
-        style={{ backgroundColor: "#fbfcff", overflow: "hidden" }}
+        style={{
+          backgroundColor: "light-dark(#fbfcff, var(--mantine-color-dark-7))",
+          overflow: "hidden",
+        }}
       >
         <Box
           aria-hidden

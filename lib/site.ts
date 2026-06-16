@@ -22,8 +22,10 @@ export type NavLink = {
 };
 
 export const siteConfig = {
-  /** Business / brand name shown in the header, footer, and metadata. */
+  /** Business / brand name used in metadata and the footer. */
   name: "Add to Cart",
+  /** Wordmark shown in the header (the domain reads as the brand). */
+  wordmark: "addtocart.ca",
   /** Short tagline used in metadata and some hero fallbacks. */
   tagline: "If you sell stuff online, I help you sell more of it.",
   /** One-sentence description for SEO / social cards. */

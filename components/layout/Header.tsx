@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import {
+  ActionIcon,
   Box,
   Burger,
   Container,
@@ -9,11 +10,37 @@ import {
   Group,
   Stack,
   Text,
+  useComputedColorScheme,
+  useMantineColorScheme,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { IconMoon, IconSun } from "@tabler/icons-react";
 import { siteConfig } from "@/lib/site";
 import { ContactButton } from "@/components/cta/ContactButton";
 import classes from "./Header.module.css";
+
+/**
+ * Very subtle light/dark toggle. Faint by default, brightens on hover (see
+ * .themeToggle in globals.css). Shows a sun in dark mode, a moon in light mode.
+ */
+function ThemeToggle() {
+  const { setColorScheme } = useMantineColorScheme();
+  const computed = useComputedColorScheme("light", { getInitialValueInEffect: true });
+
+  return (
+    <ActionIcon
+      variant="subtle"
+      color="gray"
+      size="lg"
+      radius="xl"
+      className={classes.themeToggle}
+      aria-label="Toggle color scheme"
+      onClick={() => setColorScheme(computed === "dark" ? "light" : "dark")}
+    >
+      {computed === "dark" ? <IconSun size={18} /> : <IconMoon size={18} />}
+    </ActionIcon>
+  );
+}
 
 export function Header() {
   const [opened, { toggle, close }] = useDisclosure(false);
@@ -29,8 +56,7 @@ export function Header() {
       component="header"
       className={classes.header}
       style={{
-        borderBottom:
-          "1px solid var(--mantine-color-gray-2)",
+        borderBottom: "1px solid var(--mantine-color-default-border)",
         position: "sticky",
         top: 0,
         zIndex: 100,
@@ -42,23 +68,27 @@ export function Header() {
           <Text
             component={Link}
             href="/"
-            fw={700}
-            fz="lg"
-            c="brand.8"
-            style={{ textDecoration: "none" }}
+            fw={800}
+            fz={24}
+            c="brand.6"
+            style={{ textDecoration: "none", letterSpacing: "-0.01em" }}
           >
-            {siteConfig.name}
+            {siteConfig.wordmark}
           </Text>
 
           <Group gap="xl" visibleFrom="sm">
             {links}
           </Group>
 
-          <Group visibleFrom="sm">
+          <Group gap="xs" visibleFrom="sm">
             <ContactButton size="sm" />
+            <ThemeToggle />
           </Group>
 
-          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+          <Group gap="xs" hiddenFrom="sm">
+            <ThemeToggle />
+            <Burger opened={opened} onClick={toggle} size="sm" />
+          </Group>
         </Group>
       </Container>
 
@@ -67,7 +97,7 @@ export function Header() {
         onClose={close}
         size="80%"
         padding="lg"
-        title={siteConfig.name}
+        title={siteConfig.wordmark}
         hiddenFrom="sm"
         position="right"
       >

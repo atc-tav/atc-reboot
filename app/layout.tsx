@@ -46,7 +46,7 @@ export default function RootLayout({
   return (
     <html lang="en" {...mantineHtmlProps}>
       <head>
-        <ColorSchemeScript defaultColorScheme="light" />
+        <ColorSchemeScript defaultColorScheme="auto" />
         {siteConfig.fonts.adobeKitUrl ? (
           <>
             <link rel="preconnect" href="https://use.typekit.net" crossOrigin="" />
@@ -55,7 +55,7 @@ export default function RootLayout({
         ) : null}
       </head>
       <body className={caveat.variable}>
-        <MantineProvider theme={theme} defaultColorScheme="light">
+        <MantineProvider theme={theme} defaultColorScheme="auto">
           <Header />
           <main>{children}</main>
           <Footer />

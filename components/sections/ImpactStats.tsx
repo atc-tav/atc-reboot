@@ -38,7 +38,7 @@ export function ImpactStats() {
           <Text fw={800} fz={{ base: 30, sm: 38 }} c="brand.6" lh={1}>
             {s.value}
           </Text>
-          <Text c="dark.6" fz="sm" mt="sm" lh={1.45}>
+          <Text c="dimmed" fz="sm" mt="sm" lh={1.45}>
             {s.label}
           </Text>
           <Text

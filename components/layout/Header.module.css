@@ -24,3 +24,12 @@
 .drawerLink:hover {
   color: var(--mantine-color-brand-7);
 }
+
+/* The faintest hint of an icon until hovered. */
+.themeToggle {
+  opacity: 0.35;
+  transition: opacity 160ms ease;
+}
+.themeToggle:hover {
+  opacity: 1;
+}

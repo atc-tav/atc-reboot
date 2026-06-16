@@ -32,7 +32,10 @@ export function Hero({
       component="section"
       pos="relative"
       py={{ base: 64, sm: 112 }}
-      style={{ backgroundColor: "#fbfcff", overflow: "hidden" }}
+      style={{
+        backgroundColor: "light-dark(#fbfcff, var(--mantine-color-dark-7))",
+        overflow: "hidden",
+      }}
     >
       {/* Blueprint grid, fading toward the content */}
       <Box
