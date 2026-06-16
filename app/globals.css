@@ -74,8 +74,15 @@ main {
  */
 .blueprintGridInverse {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.16) 1px, transparent 1px);
+    linear-gradient(
+        light-dark(rgba(255, 255, 255, 0.16), rgba(24, 106, 244, 0.55)) 1px,
+        transparent 1px
+      ),
+    linear-gradient(
+        90deg,
+        light-dark(rgba(255, 255, 255, 0.16), rgba(24, 106, 244, 0.55)) 1px,
+        transparent 1px
+      );
   background-size: 30px 30px;
   background-position: center;
 }

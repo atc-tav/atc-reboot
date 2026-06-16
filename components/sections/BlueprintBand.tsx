@@ -26,8 +26,10 @@ export function BlueprintBand({
       py={{ base: 56, sm: 96 }}
       style={{
         overflow: "hidden",
+        // Light: bright blue gradient. Dark: the same deep navy as the
+        // pull-quote band, so the two "tinted bands" match in dark mode.
         background:
-          "linear-gradient(160deg, var(--mantine-color-brand-6), var(--mantine-color-brand-8))",
+          "linear-gradient(160deg, light-dark(var(--mantine-color-brand-6), #0e2034), light-dark(var(--mantine-color-brand-8), #0e2034))",
       }}
     >
       <Box
