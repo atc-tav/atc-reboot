@@ -4,6 +4,7 @@ import { BlueprintBand } from "@/components/sections/BlueprintBand";
 import { DataFlow } from "@/components/sections/DataFlow";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { ImpactStats } from "@/components/sections/ImpactStats";
+import { PullQuote } from "@/components/sections/PullQuote";
 import { FeatureGrid, type Feature } from "@/components/sections/FeatureGrid";
 import { CtaSection } from "@/components/cta/CtaSection";
 
@@ -72,6 +73,23 @@ export default function HomePage() {
           </Stack>
         </Container>
       </Box>
+
+      {/* Bridge: from the problem (stats) to the solution (how I help) */}
+      <PullQuote
+        label="Where I come in"
+        quote={
+          <>
+            Every one of those numbers is a decision waiting to be made. I turn
+            your data into{" "}
+            <Text span inherit c="brand.6">
+              the short list that matters
+            </Text>{" "}
+            — what to fix first, what to test next, what to watch — and I stay
+            until it&apos;s working.
+          </>
+        }
+        handwritten="not more dashboards — better decisions"
+      />
 
       <Box component="section" py={{ base: 48, sm: 80 }}>
         <Container size="lg">
