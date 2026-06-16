@@ -18,8 +18,9 @@ export function PullQuote({ label, quote, handwritten }: PullQuoteProps) {
       component="section"
       py={{ base: 56, sm: 88 }}
       style={{
-        backgroundColor:
-          "light-dark(var(--mantine-color-brand-0), var(--mantine-color-dark-6))",
+        // Light: paper-blue. Dark: a deep blue-tinted navy so it keeps the same
+        // "tinted band" character rather than going flat grey.
+        backgroundColor: "light-dark(var(--mantine-color-brand-0), #0e2034)",
       }}
     >
       <Container size="sm">

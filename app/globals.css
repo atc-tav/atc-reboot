@@ -50,12 +50,11 @@ main {
 }
 
 /*
- * Blueprint grid background — a fine technical-drawing grid in brand blue on a
- * near-white "paper" ground, fading out toward the bottom so content stays
- * readable. Apply to hero/section wrappers (position: relative recommended).
+ * Blueprint grid — fine technical-drawing lines in brand blue. This draws ONLY
+ * the lines (transparent ground), so it can overlay any section background and
+ * adapt automatically between light and dark. The section itself owns its bg.
  */
 .blueprintGrid {
-  background-color: #fbfcff;
   background-image:
     linear-gradient(rgba(24, 106, 244, 0.07) 1px, transparent 1px),
     linear-gradient(90deg, rgba(24, 106, 244, 0.07) 1px, transparent 1px);
@@ -75,8 +74,8 @@ main {
  */
 .blueprintGridInverse {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.16) 1px, transparent 1px);
   background-size: 30px 30px;
   background-position: center;
 }

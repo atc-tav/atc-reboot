@@ -33,7 +33,9 @@ const brand: MantineColorsTuple = [
 
 export const theme = createTheme({
   primaryColor: "brand",
-  primaryShade: { light: 6, dark: 7 },
+  // Keep "true blue" (#186AF4 = shade 6) as the primary in BOTH schemes, so
+  // buttons and accents never shift to a darker blue in dark mode.
+  primaryShade: 6,
   colors: { brand },
   // Navy "ink" rather than pure black — matches the blueprint drawing aesthetic.
   black: "#0B2238",

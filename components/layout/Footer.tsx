@@ -7,7 +7,7 @@ export function Footer() {
   return (
     <footer
       style={{
-        borderTop: "1px solid var(--mantine-color-gray-2)",
+        borderTop: "1px solid var(--mantine-color-default-border)",
         marginTop: 0,
       }}
     >

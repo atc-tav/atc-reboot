@@ -22,7 +22,10 @@ export function TrustedBy() {
     <Box
       component="section"
       py={{ base: 40, sm: 56 }}
-      style={{ backgroundColor: "var(--mantine-color-gray-0)" }}
+      style={{
+        backgroundColor:
+          "light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-8))",
+      }}
     >
       <Container size="lg">
         <Stack align="center" gap="xl">
