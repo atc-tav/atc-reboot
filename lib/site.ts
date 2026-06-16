@@ -32,6 +32,14 @@ export const siteConfig = {
   /** Canonical production URL. Update when the Vercel domain is set. */
   url: "https://addtocart.ca",
 
+  /** The person behind the business (used on the About page + metadata). */
+  author: {
+    name: "Tav McGregor",
+    role: "Principal Analytics Consultant",
+    /** Drop a square photo at public/tav-mcgregor.jpg; shown as a circle. */
+    headshot: "/tav-mcgregor.jpg",
+  },
+
   /**
    * The primary call-to-action used everywhere on the site.
    * Replace `href` with a real LinkedIn URL (or later, a /contact form route).

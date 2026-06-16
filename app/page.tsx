@@ -5,6 +5,7 @@ import { DataFlow } from "@/components/sections/DataFlow";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { ImpactStats } from "@/components/sections/ImpactStats";
 import { PullQuote } from "@/components/sections/PullQuote";
+import { TrustedBy } from "@/components/sections/TrustedBy";
 import { FeatureGrid, type Feature } from "@/components/sections/FeatureGrid";
 import { CtaSection } from "@/components/cta/CtaSection";
 
@@ -103,6 +104,8 @@ export default function HomePage() {
           </Stack>
         </Container>
       </Box>
+
+      <TrustedBy />
 
       <CtaSection
         title="Let's find what's holding your store back"

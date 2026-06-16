@@ -34,6 +34,21 @@ main {
   font-family: var(--font-hand);
 }
 
+/* Logo-cloud wordmark — muted by default, brand-colored on hover. Real SVG
+   logos can later use the same hover idea via `filter: grayscale()`. */
+.trustLogo {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: 0.01em;
+  color: #94a3b8;
+  transition: color 160ms ease;
+  white-space: nowrap;
+}
+.trustLogo:hover {
+  color: var(--mantine-color-brand-7);
+}
+
 /*
  * Blueprint grid background — a fine technical-drawing grid in brand blue on a
  * near-white "paper" ground, fading out toward the bottom so content stays
