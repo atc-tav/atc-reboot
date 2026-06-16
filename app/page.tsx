@@ -4,25 +4,24 @@ import { SectionHeading } from "@/components/sections/SectionHeading";
 import { FeatureGrid, type Feature } from "@/components/sections/FeatureGrid";
 import { CtaSection } from "@/components/cta/CtaSection";
 
-// Placeholder copy — we'll replace this together in the content session.
 const services: Feature[] = [
   {
     icon: "IconChartBar",
+    title: "Reporting tied to your goals",
+    description:
+      "Dashboards that link your website stats to the OKRs that actually move revenue — so you always know what's working and what to do next.",
+  },
+  {
+    icon: "IconTargetArrow",
     title: "Conversion optimisation",
     description:
-      "Find where revenue leaks out of your funnel and fix the highest-impact gaps first.",
+      "Find where revenue leaks out of your funnel and fix the highest-impact gaps first. Measured, not guessed.",
   },
   {
     icon: "IconRocket",
-    title: "Growth strategy",
+    title: "Growth & acquisition",
     description:
-      "A clear, prioritised plan for acquisition, retention, and average order value.",
-  },
-  {
-    icon: "IconShoppingCart",
-    title: "Platform & tooling",
-    description:
-      "Make the right calls on Shopify, analytics, and the stack that runs your store.",
+      "A prioritised plan across acquisition, retention, and average order value — sized to your team, not a 60-page deck.",
   },
 ];
 
@@ -30,9 +29,9 @@ export default function HomePage() {
   return (
     <>
       <Hero
-        eyebrow="Ecommerce consulting"
-        title="Turn more of your traffic into revenue."
-        subtitle="I help online stores find what's holding back growth — and fix it. Practical, measurable, no jargon."
+        eyebrow="Ecommerce consulting for scaling DTC brands"
+        title="Make your store's data tell you what to do next."
+        subtitle="I'm an independent consultant who connects your website analytics to the goals that actually move revenue — then helps you act on them. No fluff, no jargon, no junior team."
         secondaryAction={{ label: "See what I do", href: "/services" }}
       />
 
@@ -41,15 +40,18 @@ export default function HomePage() {
           <Stack gap={48}>
             <SectionHeading
               eyebrow="How I help"
-              title="Hands-on help where it counts"
-              description="Most stores don't need a 60-page strategy deck. They need to know what to fix next — and have someone help them fix it."
+              title="From numbers to next steps"
+              description="Most stores are drowning in dashboards but short on decisions. I turn your data into a clear, prioritised plan — and help you execute it."
             />
             <FeatureGrid features={services} />
           </Stack>
         </Container>
       </Box>
 
-      <CtaSection />
+      <CtaSection
+        title="Let's find what's holding your store back"
+        description="A short, direct conversation is usually enough to know whether I can help. No pitch, no obligation."
+      />
     </>
   );
 }

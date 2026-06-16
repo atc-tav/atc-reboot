@@ -7,46 +7,46 @@ import { CtaSection } from "@/components/cta/CtaSection";
 
 export const metadata: Metadata = {
   title: "Services",
-  description: "Ecommerce consulting services: strategy, conversion, and tooling.",
+  description:
+    "Data-driven ecommerce consulting: reporting tied to OKRs, analytics, conversion optimisation, and growth strategy for scaling DTC brands.",
 };
 
-// Placeholder copy — we'll refine this in the content session.
 const services: Feature[] = [
   {
-    icon: "IconSearch",
-    title: "Store audit",
-    description:
-      "A structured review of your funnel, analytics, and merchandising, with a prioritised list of what to fix.",
-  },
-  {
     icon: "IconChartBar",
-    title: "Conversion optimisation",
+    title: "Reporting & dashboards",
     description:
-      "Ongoing testing and improvement of the pages and steps that decide whether visitors buy.",
-  },
-  {
-    icon: "IconRocket",
-    title: "Growth strategy",
-    description:
-      "A practical plan across acquisition, retention, and average order value — sized to your team.",
-  },
-  {
-    icon: "IconShoppingCart",
-    title: "Platform & migration",
-    description:
-      "Choosing or moving to the right platform (often Shopify) without breaking what already works.",
+      "The work I'm known for: dashboards that link your website stats to the OKRs that move the needle. You stop staring at vanity metrics and start seeing what drives revenue.",
   },
   {
     icon: "IconChartDots",
     title: "Analytics & tracking",
     description:
-      "Trustworthy numbers — clean GA4, server-side tracking, and dashboards you'll actually use.",
+      "Trustworthy numbers to build on — clean GA4, reliable server-side tracking, and a data layer you can actually make decisions from.",
+  },
+  {
+    icon: "IconTargetArrow",
+    title: "Conversion optimisation",
+    description:
+      "Structured testing on the pages and steps that decide whether visitors buy. Fix the biggest leaks first, prove the lift.",
+  },
+  {
+    icon: "IconRocket",
+    title: "Growth & acquisition",
+    description:
+      "A practical plan across acquisition, retention, and average order value — prioritised by impact and sized to your team.",
+  },
+  {
+    icon: "IconSearch",
+    title: "Store & funnel audit",
+    description:
+      "A focused review of your analytics, funnel, and merchandising, ending in a ranked list of what to fix and why. A common first step.",
   },
   {
     icon: "IconUsers",
     title: "Fractional support",
     description:
-      "An experienced ecommerce hand on call for your team, without a full-time hire.",
+      "An experienced, senior ecommerce hand on call for your team — direct access to me, without a full-time hire.",
   },
 ];
 
@@ -56,7 +56,7 @@ export default function ServicesPage() {
       <Hero
         eyebrow="Services"
         title="Pick a starting point, or let's find one together."
-        subtitle="Engagements range from a one-off audit to ongoing, hands-on support. Most clients start small."
+        subtitle="Engagements range from a one-off audit to ongoing, hands-on support. Most clients start small and expand once the data starts paying off."
       />
 
       <Box component="section" py={{ base: 48, sm: 80 }}>
@@ -73,7 +73,7 @@ export default function ServicesPage() {
 
       <CtaSection
         title="Not sure which you need?"
-        description="That's normal. Tell me a bit about your store and I'll point you at the highest-impact next step."
+        description="That's normal. Tell me a bit about your store and I'll point you at the highest-impact next step — even if it's not me."
       />
     </>
   );

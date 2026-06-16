@@ -25,10 +25,10 @@ export const siteConfig = {
   /** Business / brand name shown in the header, footer, and metadata. */
   name: "Add to Cart",
   /** Short tagline used in metadata and some hero fallbacks. */
-  tagline: "Ecommerce consulting that moves the numbers that matter.",
+  tagline: "Data-driven ecommerce consulting for scaling DTC brands.",
   /** One-sentence description for SEO / social cards. */
   description:
-    "Independent ecommerce consulting. Strategy, optimisation, and hands-on help for online stores that want to grow.",
+    "Independent ecommerce consultant for scaling DTC brands. I connect your store's data to the goals that move revenue — reporting and dashboards, conversion, and growth, done with senior, hands-on rigor.",
   /** Canonical production URL. Update when the Vercel domain is set. */
   url: "https://addtocart.ca",
 
