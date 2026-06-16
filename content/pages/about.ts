@@ -1,0 +1,36 @@
+import type { AboutBlock } from "./types";
+
+/** About page content. */
+export const aboutContent = {
+  header: {
+    eyebrow: "About",
+    title: "Hi, I'm Tav.",
+    intro:
+      "I'm an independent eCommerce analytics consultant — and the person behind Add to Cart. For 14 years I've helped online retailers, from scrappy startups to household names, turn their data into decisions that grow revenue.",
+  },
+
+  blocks: [
+    {
+      title: "Platform-agnostic by design",
+      body: "Whether you're on Google Analytics or Adobe, testing with Optimizely or Statsig, reporting in Power BI or Tableau — I meet your stack where it is. The tool was never the point. Connecting it to the decisions that move your business is.",
+    },
+    {
+      title: "How I got here",
+      body: "I spent over a decade inside analytics teams before going independent — building MEC's eCommerce analytics platform, leading the analytics program for Best Buy's Marketplace, and helping brands become “analytics ready” as Analytics Lead at Apply Digital. Since 2020 I've run Add to Cart, working with teams at Moderna, Disney, the NFL, Aritzia, and Lululemon — alongside many fast-growing startups.",
+    },
+    {
+      title: "I teach it, too",
+      body: "I've lectured on analytics at Simon Fraser University, UBC's Sauder School of Business, Northeastern University, and Langara College. Explaining this work to people learning it keeps me honest about what actually matters.",
+    },
+    {
+      title: "What I believe",
+      body: "Most stores don't need more data. They need fewer, better metrics — the handful that genuinely map to their goals. My job is to find those, make them impossible to ignore, and help you act on them. Data, to information, to insight — and then a decision.",
+    },
+  ] satisfies AboutBlock[],
+
+  cta: {
+    title: "Think we might be a fit?",
+    description:
+      "The easiest next step is a quick message. I'll tell you honestly whether I can help.",
+  },
+};

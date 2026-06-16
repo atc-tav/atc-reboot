@@ -2,15 +2,17 @@ import { Box, Group, Text } from "@mantine/core";
 
 /**
  * A compact "Data → Information → Insight" flow — a teaser of the analytics
- * framework from the deck. Styled white-on-blue for use inside BlueprintBand.
- * (A richer centerpiece version is earmarked for later.)
+ * framework from the deck. Pure presentation; the steps are passed in. Styled
+ * white-on-blue for use inside BlueprintBand.
  */
-const STEPS = ["Data", "Information", "Insight"];
-
-export function DataFlow() {
+export function DataFlow({
+  steps = ["Data", "Information", "Insight"],
+}: {
+  steps?: string[];
+}) {
   return (
     <Group gap="xs" justify="center" wrap="wrap" mt="sm">
-      {STEPS.map((label, i) => (
+      {steps.map((label, i) => (
         <Group gap="xs" key={label} wrap="nowrap">
           <Box
             style={{
@@ -30,7 +32,7 @@ export function DataFlow() {
               {label}
             </Text>
           </Box>
-          {i < STEPS.length - 1 && (
+          {i < steps.length - 1 && (
             <Text c="brand.1" fz="xl" fw={700} aria-hidden>
               →
             </Text>
