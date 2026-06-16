@@ -107,13 +107,6 @@ export default function AboutPage() {
               about what actually matters.
             </AboutBlock>
 
-            <AboutBlock title="A note on the last couple of years">
-              Recently I stepped back from full-time client work to recover,
-              research, and write. I&apos;m back now — and genuinely sharper for
-              the time away. It&apos;s a good reminder of what this work is really
-              about: helping people make clear decisions when things are noisy.
-            </AboutBlock>
-
             <AboutBlock title="What I believe">
               Most stores don&apos;t need more data. They need fewer, better
               metrics — the handful that genuinely map to their goals. My job is
