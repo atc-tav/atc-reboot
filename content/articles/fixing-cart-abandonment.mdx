@@ -1,0 +1,77 @@
+---
+title: "A practical playbook for cart abandonment"
+description: "Most stores leak revenue at checkout. Here's how to find the leaks and fix the ones that matter — without a redesign."
+date: "2026-06-10"
+category: "Conversion"
+readingMinutes: 6
+draft: false
+---
+
+Cart abandonment gets talked about like it's one problem. It isn't. It's a dozen
+small frictions stacked on top of each other, and most of them are fixable in an
+afternoon. This is the order I work through them.
+
+<KeyTakeaways points={[
+  "Measure where people actually drop, don't guess.",
+  "Fix mobile checkout first — that's where most revenue leaks.",
+  "Unexpected costs are the number one reason carts get abandoned.",
+  "Test one change at a time so you know what worked.",
+]} />
+
+## Start with the numbers, not the opinions
+
+Before touching anything, pull the last 90 days and find the real drop-off
+points. You're looking for the single biggest gap between two steps.
+
+<StatGrid>
+  <Stat value="69.8%" label="Average cart abandonment" />
+  <Stat value="−42%" label="Typical lift from fixing checkout" />
+  <Stat value="3 steps" label="Ideal max checkout length" />
+</StatGrid>
+
+Industry averages are a useful sanity check, but your funnel is the only one
+that matters. If your mobile checkout converts at half your desktop rate, that's
+your project.
+
+<Callout type="tip" title="Quick win">
+  Adding a free-shipping threshold (e.g. "Free shipping over $75") almost always
+  lifts both conversion and average order value at the same time.
+</Callout>
+
+## The fix, in order
+
+Work top-down. Don't jump to the shiny stuff before the basics are solid.
+
+<Steps>
+  <Step title="Show total cost early">
+    Surprise shipping and taxes at the final step are the number one reason
+    people bail. Put the full price in front of them before checkout starts.
+  </Step>
+  <Step title="Make mobile checkout effortless">
+    Big tap targets, autofill, numeric keyboards for card fields, and as few
+    screens as you can manage. Most of your traffic is on a phone.
+  </Step>
+  <Step title="Offer guest checkout">
+    Forcing account creation is pure friction. Let people buy first and create
+    an account after, if at all.
+  </Step>
+  <Step title="Add trust where money changes hands">
+    Security badges, a clear returns policy, and recognisable payment options
+    right next to the buy button.
+  </Step>
+</Steps>
+
+<Callout type="warning" title="Don't do this">
+  Resist the urge to redesign the whole checkout at once. You'll have no idea
+  which change moved the number — and you'll probably break something.
+</Callout>
+
+## Measure, then move on
+
+Change one thing, give it enough traffic to mean something, and compare against
+your baseline. Then go to the next item on the list.
+
+> The goal isn't a perfect checkout. It's a checkout that loses less money than
+> it did last month — every month.
+
+That's the whole game: small, measured improvements, compounding over time.

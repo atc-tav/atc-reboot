@@ -1,0 +1,26 @@
+.header {
+  /* keeps the sticky header above article content */
+}
+
+.link {
+  color: var(--mantine-color-gray-7);
+  text-decoration: none;
+  font-size: var(--mantine-font-size-sm);
+  font-weight: 500;
+  transition: color 120ms ease;
+}
+
+.link:hover {
+  color: var(--mantine-color-brand-7);
+}
+
+.drawerLink {
+  color: var(--mantine-color-gray-8);
+  text-decoration: none;
+  font-size: var(--mantine-font-size-lg);
+  font-weight: 500;
+}
+
+.drawerLink:hover {
+  color: var(--mantine-color-brand-7);
+}
