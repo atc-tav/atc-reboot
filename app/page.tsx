@@ -1,4 +1,4 @@
-import { Box, Container, Stack } from "@mantine/core";
+import { Box, Container, Stack, Text } from "@mantine/core";
 import { Hero } from "@/components/sections/Hero";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { FeatureGrid, type Feature } from "@/components/sections/FeatureGrid";
@@ -29,9 +29,18 @@ export default function HomePage() {
   return (
     <>
       <Hero
-        eyebrow="Ecommerce consulting for scaling DTC brands"
-        title="Make your store's data tell you what to do next."
-        subtitle="I'm an independent consultant who connects your website analytics to the goals that actually move revenue — then helps you act on them. No fluff, no jargon, no junior team."
+        eyebrow="eCommerce analytics consulting"
+        title={
+          <>
+            If you sell stuff online, I help you sell{" "}
+            <Text span inherit c="brand.6">
+              more
+            </Text>{" "}
+            of it.
+          </>
+        }
+        handwrittenNote="(aka: eCommerce analytics)"
+        subtitle="I'm an independent consultant who connects your store's data to the goals that actually move revenue — then helps you act on it. No fluff, no jargon, no junior team."
         secondaryAction={{ label: "See what I do", href: "/services" }}
       />
 

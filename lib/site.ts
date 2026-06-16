@@ -25,7 +25,7 @@ export const siteConfig = {
   /** Business / brand name shown in the header, footer, and metadata. */
   name: "Add to Cart",
   /** Short tagline used in metadata and some hero fallbacks. */
-  tagline: "Data-driven ecommerce consulting for scaling DTC brands.",
+  tagline: "If you sell stuff online, I help you sell more of it.",
   /** One-sentence description for SEO / social cards. */
   description:
     "Independent ecommerce consultant for scaling DTC brands. I connect your store's data to the goals that move revenue — reporting and dashboards, conversion, and growth, done with senior, hands-on rigor.",

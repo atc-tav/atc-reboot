@@ -34,6 +34,26 @@ main {
   font-family: var(--font-hand);
 }
 
+/*
+ * Blueprint grid background — a fine technical-drawing grid in brand blue on a
+ * near-white "paper" ground, fading out toward the bottom so content stays
+ * readable. Apply to hero/section wrappers (position: relative recommended).
+ */
+.blueprintGrid {
+  background-color: #fbfcff;
+  background-image:
+    linear-gradient(rgba(24, 106, 244, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24, 106, 244, 0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: center top;
+}
+
+/* Stronger top, fading down — layer over .blueprintGrid via a mask. */
+.blueprintFade {
+  -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+}
+
 /* Respect users who prefer reduced motion for any custom transitions. */
 @media (prefers-reduced-motion: reduce) {
   * {
