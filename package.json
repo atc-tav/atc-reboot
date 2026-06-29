@@ -5,10 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/build.mjs",
+    "build:next": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "tina": "tinacms dev -c \"next dev\"",
+    "tina:build": "tinacms build"
   },
   "dependencies": {
     "@mantine/core": "^8.1.1",
@@ -18,9 +21,11 @@
     "next": "^15.3.3",
     "next-mdx-remote": "^6.0.0",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "tinacms": "^3.9.3"
   },
   "devDependencies": {
+    "@tinacms/cli": "^2.5.1",
     "@types/node": "^22.15.0",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
