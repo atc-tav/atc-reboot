@@ -33,3 +33,8 @@ export type AboutBlock = {
   title: string;
   body: string;
 };
+
+export type Stage = {
+  title: string;
+  description: string;
+};

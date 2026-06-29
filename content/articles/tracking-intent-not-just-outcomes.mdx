@@ -1,0 +1,108 @@
+---
+title: "Track intent, not just outcomes"
+description: "Outcome metrics tell you what happened. Intent signals tell you why — and why is where the decisions live. Here's how I instrument both."
+date: "2026-06-15"
+category: "Analytics"
+readingMinutes: 6
+draft: false
+---
+
+Most stores measure outcomes obsessively: orders, revenue, conversion rate. All
+necessary. All, on their own, useless for deciding what to do next.
+
+An outcome tells you *what* happened — conversion fell to 1.8%. It says nothing
+about *why*, and "why" is the only thing you can act on. To get there you have to
+measure the layer underneath: the **signals of user intent** that lead up to the
+outcome. That's the heart of [stage two of the analytics
+cycle](/articles/the-analytics-cycle) — implementing tracking that explains, not
+just counts.
+
+<KeyTakeaways>
+  <Takeaway>Outcomes are lagging; intent signals are leading. You can steer by the leading ones.</Takeaway>
+  <Takeaway>Every outcome has a chain of intent behind it — instrument the chain, not just the end.</Takeaway>
+  <Takeaway>Track the moments where intent is highest *and* most fragile, like checkout.</Takeaway>
+  <Takeaway>Be deliberate: a few well-chosen signals beat a firehose of events nobody reads.</Takeaway>
+</KeyTakeaways>
+
+## Outcomes vs. intent
+
+Think of it as two layers. The outcome is the result. The intent signals are the
+behaviours that reveal what a visitor was *trying* to do on the way there.
+
+A drop in conversion is an outcome. But underneath it sits a chain: people
+searched, viewed products, added to cart, reached checkout, started entering an
+address. Each step is a signal of intent — and a drop-off between any two of them
+tells you exactly where the wheels came off. The outcome says "we lost sales."
+The intent chain says "we lost them at the shipping step." Only one of those is
+something you can fix on Monday.
+
+<Callout type="note" title="A quick gut-check">
+  For any number on your dashboard, ask: is this telling me *what happened* or
+  *why*? You need both layers. Most stores have a wall of the first and almost
+  none of the second.
+</Callout>
+
+## The signals worth capturing
+
+You don't need to track everything — you need to track the moments that reveal
+intent and the moments where it's most likely to break. A practical starting set
+for ecommerce:
+
+<Steps>
+  <Step title="Discovery intent">
+    Site search terms (especially the ones returning no results), category
+    browsing depth, filter usage. These tell you what people came looking for —
+    and whether you actually have it.
+  </Step>
+  <Step title="Consideration intent">
+    Product-detail engagement: image zooms, size-guide opens, reviews read,
+    repeat visits to the same product. High consideration with low conversion is
+    a loud signal that something — price, trust, clarity — is in the way.
+  </Step>
+  <Step title="Purchase intent">
+    Add-to-cart, cart views, checkout starts, and crucially the step-by-step
+    progress *through* checkout. This is the highest-intent, most-fragile stretch
+    of the whole journey. Instrument every step.
+  </Step>
+  <Step title="Friction signals">
+    Form-field errors, repeated coupon attempts, rage-clicks, back-and-forth
+    between steps. These are intent meeting an obstacle — the richest fixes
+    usually hide here.
+  </Step>
+</Steps>
+
+## Tie every signal back to a goal
+
+This is where it's easy to go wrong. The temptation is to turn on every event a
+tool offers and sort it out later. Don't. An event you collect but never look at
+is a liability — it clutters reports, slows pages, and creates the *illusion* of
+measurement.
+
+<Callout type="warning" title="More tracking isn't better tracking">
+  A firehose of unmapped events is how teams end up data-rich and decision-poor.
+  Each signal should trace back to a key result from your OKRs. If it doesn't,
+  leave it off.
+</Callout>
+
+The discipline is the same one we set up in
+[stage one](/articles/objectives-into-okrs): if a signal doesn't help explain a
+number you actually care about, you don't need it. Tracking *fewer* things, well,
+beats tracking everything, badly.
+
+## Stay platform-agnostic
+
+People expect me to arrive with a favourite tool. I don't. GA4, a warehouse-first
+setup, a product-analytics platform, server-side tagging — they're all just ways
+to capture the same signals. The right one depends on your stack, your team, and
+your budget, not on what I happen to like.
+
+What matters far more than the tool is the *thinking* underneath: which signals,
+mapped to which goals, captured cleanly enough to trust. Get that right and the
+tool becomes an implementation detail. Get it wrong and the fanciest platform on
+the market just gives you prettier noise.
+
+With both layers flowing — outcomes *and* the intent behind them — you've got
+everything the next stage needs. That's when the dashboards start telling you not
+just how the store is doing, but what to do about it.
+
+Want a tracking setup that actually explains your numbers? [Let's talk](/).

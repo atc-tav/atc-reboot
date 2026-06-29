@@ -1,4 +1,4 @@
-import type { Feature, Impact, Client, LinkAction } from "./types";
+import type { Impact, Client, Stage, LinkAction } from "./types";
 
 /**
  * Home page content. Pure data — the home page component composes these strings
@@ -66,30 +66,38 @@ export const homeContent = {
   },
 
   howIHelp: {
-    eyebrow: "How I help",
-    title: "From numbers to next steps",
+    eyebrow: "How I work",
+    title: "A repeatable cycle, not a one-off report",
     description:
-      "Most stores are drowning in dashboards but short on decisions. I turn your data into a clear, prioritised plan — and help you execute it.",
-    features: [
+      "Analytics isn't a project you finish. It's a loop: set the goals, measure what matters, learn from it, improve — then find the next thing worth chasing.",
+    stages: [
       {
-        icon: "IconChartBar",
-        title: "Reporting tied to your goals",
+        title: "Understand your objectives",
         description:
-          "Dashboards that link your website stats to the OKRs that actually move revenue — so you always know what's working and what to do next.",
+          "It starts with one question: why do you have a website? We pin down your business objectives and turn them into OKRs — so everything we measure maps to something that matters.",
       },
       {
-        icon: "IconTargetArrow",
-        title: "Conversion optimisation",
+        title: "Implement analytics",
         description:
-          "Find where revenue leaks out of your funnel and fix the highest-impact gaps first. Measured, not guessed.",
+          "Then we track it — your KPIs, plus the signals of user intent that explain them. Platform-agnostic: bring your own tools, or I'll recommend a stack that fits.",
       },
       {
-        icon: "IconRocket",
-        title: "Growth & acquisition",
+        title: "Build reports & dashboards",
         description:
-          "A prioritised plan across acquisition, retention, and average order value — sized to your team, not a 60-page deck.",
+          "This is where it starts to feel like analytics. Clear reports and dashboards — in the tools your team already uses — that show what's working at a glance.",
       },
-    ] satisfies Feature[],
+      {
+        title: "Test & optimise",
+        description:
+          "Your dashboards reveal where the journey breaks. We test improvements, measure the lift, and keep what works.",
+      },
+      {
+        title: "Deep-dive analyses",
+        description:
+          "With data flowing, we dig in to find where to move the needle next. Those findings usually surface new goals — and the cycle begins again.",
+      },
+    ] satisfies Stage[],
+    cycleNote: "Then back to step one. Each loop compounds on the last.",
   },
 
   trustedBy: {
