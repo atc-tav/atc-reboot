@@ -28,5 +28,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# tinacms — generated client/types and the built admin SPA
+tina/__generated__
+/public/admin
+
 # typescript
 *.tsbuildinfo
