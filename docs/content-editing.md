@@ -35,9 +35,10 @@ So the content consultant can log in at `https://<your-site>/admin`:
 3. Redeploy.
 
 That's all — **no build-command change needed.** The build (`scripts/build.mjs`)
-detects those env vars and automatically builds the `/admin` editor; without
-them it builds the site only. The deploy branch is auto-detected, so you don't
-need to set `NEXT_PUBLIC_TINA_BRANCH`.
+detects those env vars and builds the `/admin` editor on the **production**
+deploy; preview deploys of other branches build the site only. (Tina Cloud
+tracks your production branch — `main` — not ad-hoc feature branches, so the
+editor lives on the production site at `/admin`.)
 
 When an editor saves in `/admin`, Tina commits the change to git on your branch,
 which triggers a normal redeploy. Content in, content out — all through your
