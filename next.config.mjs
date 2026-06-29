@@ -7,6 +7,11 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ["@tabler/icons-react"],
   },
+  // The TinaCMS editor is a static SPA emitted to /public/admin/index.html.
+  // Serve it at the clean URL /admin so editors don't have to type index.html.
+  async rewrites() {
+    return [{ source: "/admin", destination: "/admin/index.html" }];
+  },
 };
 
 export default nextConfig;
