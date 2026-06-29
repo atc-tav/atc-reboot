@@ -28,19 +28,20 @@ No account or credentials needed.
 So the content consultant can log in at `https://<your-site>/admin`:
 
 1. Create a free project at <https://app.tina.io> and connect this GitHub repo.
-2. Copy the **Client ID** and a **read/write Token** into your host's env vars
-   (see `.env.tina.example`):
+2. Add the **Client ID** and a **read/write Token** as environment variables in
+   Vercel (Project → Settings → Environment Variables):
    - `NEXT_PUBLIC_TINA_CLIENT_ID`
    - `TINA_TOKEN`
-3. Set the deploy **build command** to generate the admin + client first:
-   ```
-   pnpm tina:build && pnpm build
-   ```
-   (locally that's `tinacms build && next build`.)
+3. Redeploy.
 
-That's it. When an editor saves in `/admin`, Tina commits the change to git on
-your chosen branch, which triggers a normal redeploy. Content in, content out —
-all through your repository.
+That's all — **no build-command change needed.** The build (`scripts/build.mjs`)
+detects those env vars and automatically builds the `/admin` editor; without
+them it builds the site only. The deploy branch is auto-detected, so you don't
+need to set `NEXT_PUBLIC_TINA_BRANCH`.
+
+When an editor saves in `/admin`, Tina commits the change to git on your branch,
+which triggers a normal redeploy. Content in, content out — all through your
+repository.
 
 ## What editors can insert
 
