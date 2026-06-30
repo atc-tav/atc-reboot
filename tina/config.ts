@@ -117,6 +117,69 @@ export default defineConfig({
   schema: {
     collections: [
       {
+        // Marketing copy for /about. A single JSON document (not creatable or
+        // deletable in the editor) whose shape mirrors the page's sections, so
+        // every string is editable — in-context via the visual editor.
+        name: "aboutPage",
+        label: "About page",
+        path: "content/pages",
+        format: "json",
+        match: { include: "about" },
+        ui: {
+          router: () => "/about",
+          allowedActions: { create: false, delete: false },
+        },
+        fields: [
+          {
+            type: "object",
+            name: "header",
+            label: "Header",
+            fields: [
+              { type: "string", name: "eyebrow", label: "Eyebrow" },
+              { type: "string", name: "title", label: "Title" },
+              {
+                type: "string",
+                name: "intro",
+                label: "Intro",
+                ui: { component: "textarea" },
+              },
+            ],
+          },
+          {
+            type: "object",
+            name: "blocks",
+            label: "Story blocks",
+            list: true,
+            ui: {
+              itemProps: (item) => ({ label: item?.title || "Block" }),
+            },
+            fields: [
+              { type: "string", name: "title", label: "Title" },
+              {
+                type: "string",
+                name: "body",
+                label: "Body",
+                ui: { component: "textarea" },
+              },
+            ],
+          },
+          {
+            type: "object",
+            name: "cta",
+            label: "Call to action",
+            fields: [
+              { type: "string", name: "title", label: "Title" },
+              {
+                type: "string",
+                name: "description",
+                label: "Description",
+                ui: { component: "textarea" },
+              },
+            ],
+          },
+        ],
+      },
+      {
         name: "article",
         label: "Articles",
         path: "content/articles",
