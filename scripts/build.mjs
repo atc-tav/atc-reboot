@@ -1,24 +1,37 @@
-import { spawnSync } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
+import net from "node:net";
+import path from "node:path";
+
+/** Absolute path to a locally-installed CLI (avoids a shell wrapper so child
+ *  processes can be killed directly with no lingering grandchild). */
+function bin(name) {
+  return path.join(process.cwd(), "node_modules", ".bin", name);
+}
 
 /**
- * Conditional production build.
+ * Production / preview build orchestrator.
  *
- * The public site always builds with `next build`. The TinaCMS editor at
- * /admin is built only on the PRODUCTION deploy (the branch Tina Cloud tracks,
- * i.e. main) when Tina Cloud credentials are present. Preview deploys of feature
- * branches build the site only — Tina Cloud doesn't track ad-hoc branches, so
- * attempting `tinacms build` there would fail. This keeps every preview green
- * while the editor turns on automatically in production.
+ * Since the pages now import Tina's generated client (tina/__generated__), that
+ * client MUST exist before `next build` compiles, and a GraphQL endpoint must be
+ * reachable while `next build` runs static generation. There are two ways to
+ * satisfy that:
  *
- * When the Tina editor build fails it is, by default, NON-FATAL: the public
- * site still ships, just without /admin. But — crucially — we read Tina's actual
- * error and print an accurate, actionable diagnosis. (An earlier version assumed
- * every failure was "branch not indexed", which sent debugging down the wrong
- * path for the far more common "project not found" / bad-credentials case.)
+ *   1. CLOUD (production + Tina Cloud creds): `tinacms build` generates a client
+ *      pointed at Tina Cloud and builds the /admin editor. `next build` then
+ *      fetches page data from Tina Cloud. This is the only path that ships the
+ *      live editor.
  *
- * Set TINA_BUILD_REQUIRED=true to make a failed editor build fail the whole
- * deploy instead — useful once Tina is stable and a missing /admin should be
- * treated as a broken release rather than a silent degradation.
+ *   2. LOCAL (previews, the no-creds case, and the production fallback when the
+ *      cloud build fails): we run a local Tina datalayer over the filesystem,
+ *      which generates the client and serves content on localhost while
+ *      `next build` runs, then we tear it down. No /admin editor, but the public
+ *      site builds and ships from the committed content files.
+ *
+ * On a cloud failure we print an accurate, actionable diagnosis (an earlier
+ * version always blamed "branch not indexed", which was usually wrong) and, by
+ * default, fall back to a local build so the site still deploys. Set
+ * TINA_BUILD_REQUIRED=true to instead fail the deploy when the editor can't be
+ * built.
  */
 
 const hasTina =
@@ -31,27 +44,44 @@ const isProduction = process.env.VERCEL_ENV === "production";
 // Treat a failed /admin build as fatal (fail the deploy) when explicitly asked.
 const tinaRequired = process.env.TINA_BUILD_REQUIRED === "true";
 
-/** Run a command, streaming output. Exits the process on failure when fatal. */
-function run(command, { fatal = true } = {}) {
-  console.log(`\n▶ ${command}\n`);
-  const result = spawnSync(command, { stdio: "inherit", shell: true });
-  if (result.status !== 0) {
-    if (fatal) process.exit(result.status ?? 1);
-    return false;
-  }
-  return true;
+const DATALAYER_PORT = 4001;
+
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-/**
- * Run a command, but capture its output so we can both echo it AND inspect it
- * for known failure signatures. Returns { ok, output }.
- */
+/** Run a command to completion, streaming output. Returns true on success. */
+function runSync(command) {
+  console.log(`\n▶ ${command}\n`);
+  const result = spawnSync(command, { stdio: "inherit", shell: true });
+  return result.status === 0;
+}
+
+/** Run a command, capturing output so we can both echo AND inspect it. */
 function runCaptured(command) {
   console.log(`\n▶ ${command}\n`);
   const result = spawnSync(command, { shell: true, encoding: "utf8" });
   const output = `${result.stdout ?? ""}${result.stderr ?? ""}`;
   process.stdout.write(output);
   return { ok: result.status === 0, output };
+}
+
+/** Resolve true once a TCP port accepts connections, or false on timeout. */
+async function waitForPort(port, timeoutMs) {
+  const start = Date.now();
+  while (Date.now() - start < timeoutMs) {
+    const open = await new Promise((resolve) => {
+      const socket = net.connect({ port, host: "127.0.0.1" });
+      socket.on("connect", () => {
+        socket.destroy();
+        resolve(true);
+      });
+      socket.on("error", () => resolve(false));
+    });
+    if (open) return true;
+    await delay(1000);
+  }
+  return false;
 }
 
 /** Map a Tina build failure to a precise, actionable explanation. */
@@ -75,9 +105,9 @@ function diagnoseTinaFailure(output) {
     ];
   }
 
-  // Note: match on specific phrases only. Don't key off the bare word "branch"
-  // (it appears in Tina's credential table as "branch: main") or "index" (it
-  // appears in the stack trace as "index.js") — both cause false positives.
+  // Match on specific phrases only. Don't key off the bare word "branch" (it
+  // appears in Tina's credential table as "branch: main") or "index" (it appears
+  // in the stack trace as "index.js") — both cause false positives.
   if (
     text.includes("not on tinacloud") ||
     text.includes("branch is not") ||
@@ -129,18 +159,65 @@ function diagnoseTinaFailure(output) {
 
 /** Print a hard-to-miss banner. */
 function banner(emoji, lines) {
-  const width = 76;
-  const bar = "─".repeat(width);
+  const bar = "─".repeat(76);
   console.log(`\n${emoji} ${bar}`);
   for (const line of lines) console.log(`   ${line}`);
   console.log(`${bar}\n`);
 }
 
-if (hasTina && isProduction) {
-  console.log("Production + Tina Cloud env → building the editor at /admin");
-  const { ok, output } = runCaptured("tinacms build");
+/**
+ * Build the public site backed by a LOCAL Tina datalayer: it generates the
+ * client and serves filesystem content on localhost while `next build` runs,
+ * then we tear it down. Exits the process with next build's status.
+ */
+async function buildWithLocalTina() {
+  console.log(
+    "\n▶ starting local Tina datalayer (tinacms dev --noWatch) for the build\n",
+  );
+  // Spawn the binary directly (no shell) so dev.kill() ends this exact process.
+  const dev = spawn(bin("tinacms"), ["dev", "--noWatch", "--noTelemetry"]);
+  dev.stdout?.on("data", (d) => process.stdout.write(d));
+  dev.stderr?.on("data", (d) => process.stdout.write(d));
 
-  if (!ok) {
+  // Best-effort teardown. We always finish with process.exit(), which terminates
+  // this build command regardless of the datalayer, so a surviving child can
+  // never hang the deploy (the build container is torn down afterward anyway).
+  const killDatalayer = () => {
+    try {
+      dev.kill("SIGTERM");
+    } catch {
+      /* already gone */
+    }
+  };
+
+  const ready = await waitForPort(DATALAYER_PORT, 180_000);
+  if (!ready) {
+    killDatalayer();
+    banner("❌", [
+      `Local Tina datalayer never came up on port ${DATALAYER_PORT}.`,
+      "Cannot generate the Tina client → cannot build. See output above.",
+    ]);
+    process.exit(1);
+  }
+
+  console.log(`\n✅ datalayer up on :${DATALAYER_PORT} → running next build\n`);
+  const built = spawnSync(bin("next"), ["build"], { stdio: "inherit" });
+
+  killDatalayer();
+  // Force exit so a lingering datalayer handle can never hang the deploy.
+  process.exit(built.status ?? 1);
+}
+
+async function main() {
+  if (hasTina && isProduction) {
+    console.log("Production + Tina Cloud env → building the editor at /admin");
+    const { ok, output } = runCaptured("tinacms build");
+
+    if (ok) {
+      console.log("\n✅ Tina editor built → /admin will be available.\n");
+      process.exit(runSync("next build") ? 0 : 1);
+    }
+
     const diagnosis = diagnoseTinaFailure(output);
 
     if (tinaRequired) {
@@ -156,19 +233,25 @@ if (hasTina && isProduction) {
       "TINA EDITOR NOT DEPLOYED — shipping a site-only build (no /admin).",
       "",
       ...diagnosis,
+      "",
+      "Building the public site from committed content so it still ships.",
     ]);
-  } else {
-    console.log("\n✅ Tina editor built → /admin will be available.\n");
+    await buildWithLocalTina();
+    return;
   }
-} else if (hasTina) {
-  console.log(
-    "Tina env present but this isn't a production deploy → site-only build " +
-      "(Tina Cloud tracks the production branch; /admin builds in production).",
-  );
-} else {
-  console.log(
-    "No Tina Cloud env (NEXT_PUBLIC_TINA_CLIENT_ID / TINA_TOKEN) → site-only build; /admin skipped",
-  );
+
+  if (hasTina) {
+    console.log(
+      "Tina env present but not a production deploy → preview build " +
+        "(site only; Tina Cloud tracks production, /admin builds there).",
+    );
+  } else {
+    console.log(
+      "No Tina Cloud env (NEXT_PUBLIC_TINA_CLIENT_ID / TINA_TOKEN) → " +
+        "site-only build; /admin skipped.",
+    );
+  }
+  await buildWithLocalTina();
 }
 
-run("next build");
+main();
